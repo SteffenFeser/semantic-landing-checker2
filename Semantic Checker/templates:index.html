@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic Ad-to-Landing Page Checker</title>
+</head>
+<body>
+  <h1>🔍 Semantic Ad-to-Landing Page Checker</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <label>CSV mit AdText, Keyword, FinalURL hochladen:</label><br>
+    <input type="file" name="file"><br><br>
+    <button type="submit">Analyse starten</button>
+  </form>
+
+  {% if results %}
+    <h2>Ergebnisse</h2>
+    <table border="1">
+      <tr>
+        <th>Keyword</th>
+        <th>AdText</th>
+        <th>FinalURL</th>
+        <th>Score</th>
+        <th>Bewertung</th>
+        <th>Optimierungsvorschlag</th>
+      </tr>
+      {% for row in results %}
+        <tr>
+          <td>{{ row['Keyword'] }}</td>
+          <td>{{ row['AdText'] }}</td>
+          <td><a href="{{ row['FinalURL'] }}" target="_blank">{{ row['FinalURL'] }}</a></td>
+          <td>{{ row['Score'] }}</td>
+          <td>{{ row['Bewertung'] }}</td>
+          <td>{{ row['Suggestion'] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+</body>
+</html>
