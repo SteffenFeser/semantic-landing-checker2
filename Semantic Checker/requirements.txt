@@ -1,6 +1,0 @@
-Flask
-openai
-pandas
-requests
-beautifulsoup4
-scikit-learn
